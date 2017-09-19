@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Shopping List</title>
+	<style>
+		p{
+			color: yellow;
+			font-family: "arial",sans-serif;
+			font-size: 1.2em;
+		}
+		body{
+
+			color: white;
+			background-color: black;
+		}
+		li.sale{
+			color: red;
+		}
+		#purcharse{
+			border: 1px solid white;
+			background-color: #333;
+			color: #ccc;
+			padding: 20px;
+		}
+	</style>
+</head>
+<body>
+    
+	<h1>What to buy</h1>
+    <p>this is just a test.</p>
+	<p title="a gentle reminder">Don't forget to buy this stuff</p>
+	<ul id="purcharse">
+		<li>A tin of beans</li>
+		<li class="sale">cheese</li>
+		<li class="sale important">Milk</li>
+	</ul>
+
+	<script>
+
+//        alert(document.getElementsByClassName("important sale").length)        
+        
+//      var items=document.getElementsByTagName("body")
+//       for(var i=0;i<document.items("li").length;i++){
+//
+//           
+//           alert(typeof items);
+//       
+//       }
+       //将dom值赋予paras
+       //记得，getElementsByTagName返回的是一个数组
+        var paras=document.getElementsByTagName("p");
+        //遍历这个数组
+        for(var i=0;i<paras.length;i++){
+            //getAttribute返回的是属性title的值
+            var title_text=paras[i].getAttribute("title");
+            if(title_text==null){
+                //setAttribute很奇怪，他允许用户修改属性的值，并且只是动态修改，静态代码上没有任何
+                //变化，只是在刷新页面时动态执行。
+                //如果返回空，添加属性和属性值
+                paras[i].setAttribute("title","a list of good.");
+                //这步是修改
+                paras[i+1].setAttribute("title","brand new title text.");
+            }
+            //全部打印出来。
+            alert(paras[i].getAttribute('title')); 
+        }
+        
+	</script>
+</body>
+</html>
