@@ -18,18 +18,18 @@ function curry(fn){
 //应用curry函数。
 
 //应用的对象函数。
-
 function add(num1,num2,num3){
     return num1+num2+num3;
 }
-
 //开始
-//该步骤返回一个函数，并且将参数5和12转换为数组[5]
+//柯里化，添加数组为["a"]
 var curriedAdd=curry(add,"a");
-//该步骤很关键，实际上是在执行返回函数，传入一个参数3。
-
+//第二次进行柯里化
 var curriedAdd2=curry(curriedAdd,"c");
+//执行函数
 var printstr2=curriedAdd2("d");
-console.log(printstr2);
+//打印输出
+console.log(printstr2);//acd
 
-//我们回到返回函数看看，首先，它会将3这个参数数组化[3],然后将其合并到[5]中，变成[5,3],最后返回对传入函数（第一个参数）的调用。
+//柯里化的关键点在于闭包的娴熟运用，闭包的特性在于  当闭包调用创建该闭包的函数之变量时，被调用的函数保持活跃（保持对象活跃），即没有完全退出函数
+//自然也不会被清除掉，所以其定义的变量会保存最后一次变化的值
